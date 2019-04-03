@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGtnDetailsTable extends Migration
+class CreatePoHeaderTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,13 @@ class CreateGtnDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gtn_details', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('po_header', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('location');
+            $table->string('supplier');
+            $table->date('due_date');
+            $table->integer('status');
+            $table->string('remark')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreateGtnDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gtn_details');
+        Schema::dropIfExists('po_header');
     }
 }

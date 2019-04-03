@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocationStocksTable extends Migration
+class AddUserCreatedToPoHeader extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateLocationStocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('location_stocks', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::table('po_header', function ($table) {
+            $table->integer('user_created');
+            $table->integer('user_modified')->nullable();
         });
     }
 
@@ -26,6 +26,6 @@ class CreateLocationStocksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('location_stocks');
+        //
     }
 }

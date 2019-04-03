@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaxProfilesTable extends Migration
+class CreateDocumentTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateTaxProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tax_profiles', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('document_types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('description');
+            $table->integer('bin_card');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateTaxProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tax_profiles');
+        Schema::dropIfExists('document_types');
     }
 }

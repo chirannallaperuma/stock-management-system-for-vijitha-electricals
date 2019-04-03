@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGtnModelsTable extends Migration
+class CreateUserRoleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateGtnModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gtn_models', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('user_role', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('role_id');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateGtnModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gtn_models');
+        Schema::dropIfExists('user_role');
     }
 }
